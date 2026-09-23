@@ -1,0 +1,193 @@
+CREATE TABLE fact_sales (
+	invoice_id VARCHAR(100), 
+ 	branch_id INT,   
+ 	customer_id INT,
+ 	product_id INT,
+ 	quantity INT,
+ 	date DATE,
+ 	time TIME,
+ 	payment INT,
+ 	rating FLOAT
+);
+
+
+CREATE TABLE dim_product (
+	product_id INT,
+	product_name VARCHAR(100),
+	product_line VARCHAR(100),
+	price DECIMAL
+);
+
+INSERT INTO dim_product (product_id, product_name, product_line, price)
+VALUES
+(1, 'Leather Wallet', 'Fashion accessories', 45.99),
+(2, 'Bluetooth Earbuds', 'Electronic accessories', 89.50),
+(3, 'Vitamin C Serum', 'Health and beauty', 25.75),
+(4, 'Organic Green Tea', 'Food and beverages', 15.20),
+(5, 'Yoga Mat', 'Sports and travel', 39.99),
+(6, 'Wall Clock', 'Home and lifestyle', 29.90),
+(7, 'Silk Scarf', 'Fashion accessories', 34.50),
+(8, 'Wireless Charger', 'Electronic accessories', 22.00),
+(9, 'Herbal Shampoo', 'Health and beauty', 18.45),
+(10, 'Gourmet Coffee Beans', 'Food and beverages', 12.95),
+(11, 'Hiking Backpack', 'Sports and travel', 65.00),
+(12, 'Scented Candles Set', 'Home and lifestyle', 27.50),
+(13, 'Sunglasses', 'Fashion accessories', 49.95),
+(14, 'Smartwatch', 'Electronic accessories', 129.99),
+(15, 'Face Moisturizer', 'Health and beauty', 21.10),
+(16, 'Dark Chocolate Box', 'Food and beverages', 9.75),
+(17, 'Resistance Bands', 'Sports and travel', 19.99),
+(18, 'Ceramic Vase', 'Home and lifestyle', 33.40),
+(19, 'Wool Beanie', 'Fashion accessories', 17.60),
+(20, 'Power Bank 10000mAh', 'Electronic accessories', 38.80),
+(21, 'Charm Bracelet', 'Fashion accessories', 22.75),
+(22, 'USB-C Cable', 'Electronic accessories', 9.99),
+(23, 'Aloe Vera Gel', 'Health and beauty', 14.30),
+(24, 'Sparkling Water', 'Food and beverages', 3.50),
+(25, 'Camping Tent', 'Sports and travel', 150.00),
+(26, 'Throw Pillow', 'Home and lifestyle', 18.90),
+(27, 'Leather Belt', 'Fashion accessories', 40.00),
+(28, 'Noise Cancelling Headphones', 'Electronic accessories', 199.99),
+(29, 'Lip Balm Set', 'Health and beauty', 12.00),
+(30, 'Organic Honey', 'Food and beverages', 11.20),
+(31, 'Running Shoes', 'Sports and travel', 75.00),
+(32, 'Indoor Plant Pot', 'Home and lifestyle', 25.00),
+(33, 'Fashion Sunglasses', 'Fashion accessories', 55.00),
+(34, 'Tablet Stand', 'Electronic accessories', 29.99),
+(35, 'Facial Cleanser', 'Health and beauty', 19.50),
+(36, 'Granola Bars', 'Food and beverages', 6.40),
+(37, 'Travel Pillow', 'Sports and travel', 15.00),
+(38, 'Decorative Lamp', 'Home and lifestyle', 44.75),
+(39, 'Silk Tie', 'Fashion accessories', 30.00),
+(40, 'Portable Speaker', 'Electronic accessories', 59.99),
+(41, 'Beaded Necklace', 'Fashion accessories', 27.50),
+(42, 'Gaming Mouse', 'Electronic accessories', 49.99),
+(43, 'Essential Oils Set', 'Health and beauty', 35.00),
+(44, 'Protein Powder', 'Food and beverages', 45.25),
+(45, 'Mountain Bike Helmet', 'Sports and travel', 85.00),
+(46, 'Wooden Picture Frame', 'Home and lifestyle', 22.30),
+(47, 'Canvas Tote Bag', 'Fashion accessories', 18.75),
+(48, 'Laptop Sleeve', 'Electronic accessories', 24.50),
+(49, 'Hand Cream', 'Health and beauty', 9.99),
+(50, 'Organic Almonds', 'Food and beverages', 12.80),
+(51, 'Fitness Tracker', 'Sports and travel', 79.95),
+(52, 'Wall Art Poster', 'Home and lifestyle', 15.60),
+(53, 'Stud Earrings', 'Fashion accessories', 16.40),
+(54, 'Portable SSD', 'Electronic accessories', 89.99),
+(55, 'Bath Bomb Set', 'Health and beauty', 22.00),
+(56, 'Herbal Tea Mix', 'Food and beverages', 7.25),
+(57, 'Trekking Poles', 'Sports and travel', 55.00),
+(58, 'Cozy Blanket', 'Home and lifestyle', 38.50),
+(59, 'Wool Socks', 'Fashion accessories', 13.90),
+(60, 'Smart Home Hub', 'Electronic accessories', 99.99);
+
+CREATE TABLE dim_customer (
+	customer_id INT,
+	customer_name VARCHAR(100),
+	customer_type VARCHAR(100),
+	gender VARCHAR(50)
+);
+
+INSERT INTO dim_customer (customer_id, customer_name, customer_type, gender)
+VALUES
+(1, 'Taylor Swift', 'Member', 'Female'),
+(2, 'Dwayne Johnson', 'Normal', 'Male'),
+(3, 'Beyoncé Knowles', 'Member', 'Female'),
+(4, 'Chris Hemsworth', 'Member', 'Male'),
+(5, 'Ariana Grande', 'Normal', 'Female'),
+(6, 'Ryan Reynolds', 'Member', 'Male'),
+(7, 'Emma Watson', 'Member', 'Female'),
+(8, 'Tom Holland', 'Normal', 'Male'),
+(9, 'Zendaya Coleman', 'Member', 'Female'),
+(10, 'Leonardo DiCaprio', 'Normal', 'Male'),
+(11, 'Selena Gomez', 'Member', 'Female'),
+(12, 'Keanu Reeves', 'Normal', 'Male'),
+(13, 'Margot Robbie', 'Member', 'Female'),
+(14, 'Henry Cavill', 'Member', 'Male'),
+(15, 'Billie Eilish', 'Normal', 'Female'),
+(16, 'Jason Momoa', 'Member', 'Male'),
+(17, 'Natalie Portman', 'Normal', 'Female'),
+(18, 'Brad Pitt', 'Member', 'Male'),
+(19, 'Jennifer Lawrence', 'Member', 'Female'),
+(20, 'John Cena', 'Normal', 'Male');
+
+CREATE TABLE dim_branch (
+	branch_id INT,
+	branch_name VARCHAR(100),
+	branch_city VARCHAR(100)
+);
+
+INSERT INTO dim_branch (branch_id, branch_name, branch_city)
+VALUES 
+(1, 'Main Branch', 'Yangon'),
+(2, 'Second Branch', 'Naypyitaw'),
+(3, 'Third Branch', 'Mandalay');
+
+CREATE TABLE dim_payment (
+	payment_id INT,
+	payment_type VARCHAR(100)
+);
+
+INSERT INTO dim_payment (payment_id, payment_type)
+VALUES
+(1, 'Credit card'),
+(2, 'Ewallet'),
+(3, 'Cash');
+
+
+SELECT *
+FROM fact_sales LIMIT 10;
+
+SELECT * FROM dim_product;
+
+SELECT * FROM dim_customer;
+
+SELECT * FROM dim_branch;
+
+SELECT * FROM dim_payment;
+
+-- 1. Total revenue by branch city
+SELECT dim_branch.branch_city,
+	SUM(fact_sales.quantity * dim_product.price) AS total_revenue
+FROM fact_sales
+JOIN dim_branch
+	ON fact_sales.branch_id = dim_branch.branch_id
+JOIN dim_product
+	ON fact_sales.product_id = dim_product.product_id
+GROUP BY dim_branch.branch_city;
+
+-- 2. Top 5 customers who spends the most
+SELECT dim_customer.customer_name,
+	SUM(fact_sales.quantity * dim_product.price) AS total_spent
+FROM fact_sales
+JOIN dim_customer
+	ON fact_sales.customer_id = dim_customer.customer_id
+JOIN dim_product
+	ON fact_sales.product_id = dim_product.product_id
+GROUP BY dim_customer.customer_name
+ORDER BY total_spent DESC
+LIMIT 5;
+
+-- 3. Total quantity 
+SELECT dim_product.product_line,
+	SUM(fact_sales.quantity) AS total_quantity
+FROM fact_sales
+JOIN dim_product
+	ON fact_sales.product_id = dim_product.product_id
+GROUP BY dim_product.product_line;
+
+-- 4. Show the distribution of payment type used
+SELECT dim_payment.payment_type,
+	COUNT(*) AS total_used
+FROM fact_sales
+JOIN dim_payment
+	ON fact_sales.payment = dim_payment.payment_id
+GROUP BY dim_payment.payment_type;
+
+-- 5. Average rating per product line
+SELECT dim_product.product_line,
+	AVG(fact_sales.rating) AS average_rating
+FROM fact_sales
+JOIN dim_product
+	ON fact_sales.product_id = dim_product.product_id
+GROUP BY dim_product.product_line;
